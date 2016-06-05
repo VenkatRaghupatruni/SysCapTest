@@ -21,10 +21,11 @@ Note: Sample File is random data
 
 I have made the following changes to the code:
 
-1. The functionality in the controller class is shifted to a new service class 'FileSystemService'  
-in 'Services' Folder.
+1. The functionality in the controller class is shifted to a new service classes  called 'FileSystemService',
+'FileUploader' and 'FileProcessor'  in 'Services' Folder.
 
-2. Abstraction of the 'FileSystemService' class is available in the  'IFileSystemService' in the same folder.
+2. Abstractions of the services classes are available in the 'Interfaces' folder. 
+'IFileSystemService', 'IFileUploader' and 'IFileProcessor'.
 
 3. The file System service also implements IDisposable interface to correctly dispose off 
 all managed and unmanaged resources.
@@ -37,9 +38,9 @@ added in 'App_Start' folder and new class 'NyUnityDependencyResolver' in Infrast
 
 6. Unnecessary classes like 'FileReader' and 'FileWriter' are removed from Models folder.
 
-7. There is no need for 'NewContactViewModel' and hence removed. The additional functionality in 
+7. There is big difference between 'NewContactViewModel' and 'ContactViewModel'. The additional functionality in 
 'NewContactViewModel' class is added to 'ContactViewModel' itself and also the file is renamed to 
-the same name.
+the same name. There is no need for 'NewContactViewModel' and hence removed.
 
 8. References to all unused name-spaces removed from all files.
 
@@ -47,6 +48,6 @@ the same name.
 
 Enhancements for the future:
 
-1. Validations for all the fields can be added for all the fields.
+1. Validations can be added for all the fields.
 
 2. Unit tests can be added.

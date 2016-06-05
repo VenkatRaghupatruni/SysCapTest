@@ -1,18 +1,23 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using ContactProcessor.Models;
-using ContactProcessor.Services;
+using ContactProcessor.Interfaces;
 
 namespace ContactProcessor.Controllers
 {
     public class CSVReaderWriterController : Controller
     {
-
+        // we just need references to service abstractions 
         private IFileSystemService _fileSystemService;
+        private IFileUploader _fileUploader;
+        private IFileProcessor _fileProcessor;
 
-        public CSVReaderWriterController(IFileSystemService fileSystemService)
+        //Dependency injection through constructor
+        public CSVReaderWriterController(IFileSystemService fileSystemService, IFileUploader fileUploader, IFileProcessor fileProcessor)
         {
             _fileSystemService = fileSystemService;
+            _fileUploader = fileUploader;
+            _fileProcessor = fileProcessor;
         }
 
         [HttpGet]
@@ -25,7 +30,7 @@ namespace ContactProcessor.Controllers
         public ActionResult Read(HttpPostedFileBase file)
         {
             string uploadFolder = Server.MapPath("~/App_Data/Uploads");
-            string uploadedFilePath = _fileSystemService.UploadFile(file, uploadFolder);
+            string uploadedFilePath = _fileUploader.UploadFile(file, uploadFolder);
             var model = _fileSystemService.ReadFile(uploadedFilePath);
             return View("DisplayInput", model);
         }
@@ -53,9 +58,22 @@ namespace ContactProcessor.Controllers
 
         public ActionResult Process(string filename)
         {
-            _fileSystemService.ProcessFile(filename);
+            _fileProcessor.ProcessFile(filename);
 
             return Content("Email Sent");
+        }
+
+        // It may be a bit overkill in this case, but normally this is the way to dispose off 
+        // the resources.
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            if (disposing)
+            {
+                if (_fileSystemService != null)
+                    _fileSystemService.Dispose();
+            }
         }
     }
 }

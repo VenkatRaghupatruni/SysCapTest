@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using ContactProcessor.Services;
 using ContactProcessor.Infrastructure;
+using ContactProcessor.Interfaces;
 
 namespace ContactProcessor
 {
@@ -28,7 +25,9 @@ namespace ContactProcessor
 
         private static void RegisterServices(IUnityContainer _container)
         {
-            _container.RegisterType(typeof(IFileSystemService), typeof(FileSystemService));          
+            _container.RegisterType(typeof(IFileSystemService), typeof(FileSystemService));
+            _container.RegisterType(typeof(IFileUploader), typeof(FileUploader));
+            _container.RegisterType(typeof(IFileProcessor), typeof(FileProcessor));
         }
 
         private static IUnityContainer BuildUnityContainer()

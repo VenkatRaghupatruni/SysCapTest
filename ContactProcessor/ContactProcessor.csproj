@@ -131,11 +131,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\MyUnityDependencyResolver.cs" />
+    <Compile Include="Interfaces\IFileProcessor.cs" />
+    <Compile Include="Interfaces\IFileUploader.cs" />
     <Compile Include="Models\DisplayInputViewModel.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FileProcessor.cs" />
     <Compile Include="Services\FileSystemService.cs" />
-    <Compile Include="Services\IFileSystemService.cs" />
+    <Compile Include="Interfaces\IFileSystemService.cs" />
+    <Compile Include="Services\FileUploader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -156,7 +160,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="Services\packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\CSVReaderWriter\Read.cshtml" />

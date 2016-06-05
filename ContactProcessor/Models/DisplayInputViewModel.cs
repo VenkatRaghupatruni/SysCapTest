@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using ContactProcessor.Controllers;
+﻿using System.Collections.Generic;
 
 namespace ContactProcessor.Models
 {
