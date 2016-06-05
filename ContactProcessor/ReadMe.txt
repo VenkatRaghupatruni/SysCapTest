@@ -24,7 +24,7 @@ I have made the following changes to the code:
 1. The functionality in the controller class is shifted to a new service classes  called 'FileSystemService',
 'FileUploader' and 'FileProcessor'  in 'Services' Folder.
 
-2. Abstractions of the services classes are available in the 'Interfaces' folder. 
+2. Abstractions of the services classes are available in the 'Interfaces' folder.  
 'IFileSystemService', 'IFileUploader' and 'IFileProcessor'.
 
 3. The file System service also implements IDisposable interface to correctly dispose off 
@@ -36,9 +36,9 @@ all managed and unmanaged resources.
 added in 'App_Start' folder and new class 'NyUnityDependencyResolver' in Infrastructure folder and 
 'Global.asax' file modified.)
 
-6. Unnecessary classes like 'FileReader' and 'FileWriter' are removed from Models folder.
+6. Unnecessary view model classes like 'FileReader' and 'FileWriter' are removed from Models folder.
 
-7. There is big difference between 'NewContactViewModel' and 'ContactViewModel'. The additional functionality in 
+7. There is no big difference between 'NewContactViewModel' and 'ContactViewModel'. The additional functionality in 
 'NewContactViewModel' class is added to 'ContactViewModel' itself and also the file is renamed to 
 the same name. There is no need for 'NewContactViewModel' and hence removed.
 
